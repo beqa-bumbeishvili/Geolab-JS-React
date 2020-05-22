@@ -11,36 +11,36 @@
 </head>
 <body>
     <div class="container">
-
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">ფასი</span>
-        </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </div>
-      
-       <div class="row">
-           <div id="porsche" class="col-3">
-               <img src="cars/porsche.jpg" class="w-100" height="200" />
-               <button class="btn btn-primary w-100" >ყიდვა</button>
-           </div>
+        <div class="container mt-5">   
+            <form class="form-inline my-2 my-lg-0 text-center d-block">
+                <input class="form-control mr-sm-2" type="search" placeholder="ფასი" aria-label="Search">
+                <button id="searchResult" onclick="searchResultAlert(this.id)"class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>       
+        <div class="row mt-5">
+            <div id="porsche" class="col-3">
+                <img src="cars/porsche.jpg" class="w-100 rounded" height="200" id="porsche-1"/>
+                <button class="btn btn-primary w-100">ყიდვა</button>
+            </div>
            <div id="mecedes" class="col-3">
-               <img src="cars/mercedes.jpg" class="w-100" height="200"/>
+               <img src="cars/mercedes.jpg" class="w-100 rounded" height="200"/>
                <button  class="btn btn-primary w-100" >ყიდვა</button>
            </div>
            <div id="toyota" class="col-3">
-               <img src="cars/toyota.jpg" class="w-100" height="200"/>
+               <img src="cars/toyota.jpg" class="w-100 rounded" height="200"/>
                <button class="btn btn-primary w-100" >ყიდვა</button>
            </div>
            <div id="ford" class="col-3">
-               <img src="cars/ford.png" class="w-100" height="200"/>
+               <img src="cars/ford.png" class="w-100 rounded" height="200"/>
                <button class="btn btn-primary w-100" >ყიდვა</button>
            </div>
            <div id="honda" class="col-3">
-               <img src="cars/honda.png" class="w-100" height="200"/>
+               <img src="cars/honda.png" class="w-100 rounded" height="200"/>
                <button class="btn btn-primary w-100" >ყიდვა</button>
            </div>
        </div>
    </div>
+
+    
 </body>
 </html>
