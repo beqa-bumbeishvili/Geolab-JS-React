@@ -1,46 +1,53 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Homework 4</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src='scripts.js'></script>
 </head>
+
 <body>
     <div class="container">
 
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-default">ფასი</span>
+                <span class="input-group-text" id="inputGroup-sizing-default">ფასი</span>
+            </div>
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
         </div>
-            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-      </div>
-      
-       <div class="row">
-           <div id="porsche" class="col-3">
-               <img src="cars/porsche.jpg" class="w-100" height="200" />
-               <button class="btn btn-primary w-100" >ყიდვა</button>
-           </div>
-           <div id="mecedes" class="col-3">
-               <img src="cars/mercedes.jpg" class="w-100" height="200"/>
-               <button  class="btn btn-primary w-100" >ყიდვა</button>
-           </div>
-           <div id="toyota" class="col-3">
-               <img src="cars/toyota.jpg" class="w-100" height="200"/>
-               <button class="btn btn-primary w-100" >ყიდვა</button>
-           </div>
-           <div id="ford" class="col-3">
-               <img src="cars/ford.png" class="w-100" height="200"/>
-               <button class="btn btn-primary w-100" >ყიდვა</button>
-           </div>
-           <div id="honda" class="col-3">
-               <img src="cars/honda.png" class="w-100" height="200"/>
-               <button class="btn btn-primary w-100" >ყიდვა</button>
-           </div>
-       </div>
-   </div>
+
+        <div class="row">
+            <div id="porsche" class="col-3">
+                <img src="cars/porsche.jpg" class="w-100" height="200" id="porsche-1"
+                    onclick="showCarDetail(this.id)" />
+                <button class="btn btn-primary w-100">ყიდვა</button>
+            </div>
+            <div id="mercedes" class="col-3">
+                <img src="cars/mercedes.jpg" class="w-100" height="200" id="mercedes-1"
+                    onclick="showCarDetail(this.id)" />
+                <button class="btn btn-primary w-100">ყიდვა</button>
+            </div>
+            <div id="toyota" class="col-3">
+                <img src="cars/toyota.jpg" class="w-100" height="200" id="toyota-1" onclick="showCarDetail(this.id)" />
+                <button class="btn btn-primary w-100">ყიდვა</button>
+            </div>
+            <div id="ford" class="col-3">
+                <img src="cars/ford.png" class="w-100" height="200" id="ford-1" onclick="showCarDetail(this.id)" />
+                <button class="btn btn-primary w-100">ყიდვა</button>
+            </div>
+            <div id="honda" class="col-3">
+                <img src="cars/honda.png" class="w-100" height="200" id="honda-1" onclick="showCarDetail(this.id)" />
+                <button class="btn btn-primary w-100">ყიდვა</button>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
