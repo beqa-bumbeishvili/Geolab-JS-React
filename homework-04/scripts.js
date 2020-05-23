@@ -61,7 +61,7 @@ function getFilteredCars(price) {
 
 //generate text from cars
 function availableCarsTextList(availableCars) {
-    let carInfo = '';
+    let carInfo = 'ამ ფასად შეგიძლიათ შეიძინოთ: \n';
 
     for (let i = 0; i < availableCars.length; i++) {
         let currentCar = availableCars[i];
