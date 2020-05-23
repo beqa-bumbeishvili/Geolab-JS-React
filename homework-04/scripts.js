@@ -42,7 +42,9 @@ function searchResultAlert() {
             alertText = "სამწუხაროდ ამ ფასად მანქანას ვერ შეიძენთ";
         }
     }
-
+   else {
+       alertText = "გთხოვთ შეიყვანოთ ფასი სწორ ფორმატში.";
+   }
     alert(alertText);
 }
 
