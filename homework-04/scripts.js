@@ -6,6 +6,7 @@ let ford = { id: 'ford-1', manufacturer: 'Ford', model: 'Fusion', color: 'gray',
 
 let cars = [porsche, mercedes, toyota, honda, ford];
 
+//show card details when user clicks on the image
 function showCarDetail(carID) {
     let car = cars.find(d => d.id === carID); //find car with id
     let alertText;
@@ -17,9 +18,73 @@ function showCarDetail(carID) {
 მოდელი - ${car.model}
 გამოშვების წელი - ${car.releaseYear}
 ცხენის ძალა - ${car.horsepower}
-ფასი - ${car.price}`
-    };
+ფასი - ${car.price}`;
+    }
+    else
+        alertText = 'მანქანა ვერ მოიძებნა';
 
     alert(alertText);
+}
 
+//show available cars under certain price
+function searchResultAlert() {
+    let price = document.getElementById('price-input').value;
+    let priceAsNumber = parseInt(price);
+    let validNumber = !isNaN(priceAsNumber);
+    let alertText;
+
+    if (validNumber) {
+        let availableCars = getFilteredCars(priceAsNumber);
+
+        if (availableCars.length > 0) {
+            alertText = availableCarsTextList(availableCars);
+        } else {
+            alertText = undefinedcars(priceAsNumber);
+        }
+    }
+
+    alert(alertText);
+}
+
+//find cars under price
+function getFilteredCars(price) {
+    let filteredCars = [];
+
+    for (let i = 0; i < cars.length; i++) {
+        let currentPrice = parseInt(cars[i].price);
+
+        if (!isNaN(currentPrice) && currentPrice <= price) {
+            filteredCars.push(cars[i]);
+        } 
+    }
+
+    return filteredCars;
+}
+
+//generate text from cars
+function availableCarsTextList(availableCars) {
+    let carInfo = 'ამ ფასად შეგიძლიათ შეიძინოთ: \n';
+
+    for (let i = 0; i < availableCars.length; i++) {
+        let currentCar = availableCars[i];
+        carInfo += `${currentCar.manufacturer} ${currentCar.model} ${currentCar.price} \n`;
+    }
+
+    return carInfo;
+}
+
+
+//not included pices
+function undefinedcars(price) {
+    let alertText;
+
+    for (let i = 0; i < cars.length; i++) {
+        let currentPrice = parseInt(cars[i].price);
+
+        if (!isNaN(currentPrice) && currentPrice > price) {
+            alertText = 'სამწუხაროდ ამ ფასად მანქანას ვერ შეიძენთ'; 
+        } 
+    }
+
+    return alertText;
 }
