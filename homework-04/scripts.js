@@ -12,7 +12,7 @@ function showCarDetail(carID) {
     let alertText;
 
     if (car) {  //if car found
-        alertText =  `ამ მანქანას აქვს შემდეგი მახასიათებლები:
+        alertText = `ამ მანქანას აქვს შემდეგი მახასიათებლები:
 მარკა - ${car.manufacturer}
 ფერი - ${car.color}
 მოდელი - ${car.model}
