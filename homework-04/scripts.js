@@ -39,7 +39,7 @@ function searchResultAlert() {
         if (availableCars.length > 0) {
             alertText = availableCarsTextList(availableCars);
         } else {
-            alertText = undefinedcars(priceAsNumber);
+            alertText = "სამწუხაროდ ამ ფასად მანქანას ვერ შეიძენთ";
         }
     }
 
@@ -71,20 +71,4 @@ function availableCarsTextList(availableCars) {
     }
 
     return carInfo;
-}
-
-
-//not included pices
-function undefinedcars(price) {
-    let alertText;
-
-    for (let i = 0; i < cars.length; i++) {
-        let currentPrice = parseInt(cars[i].price);
-
-        if (!isNaN(currentPrice) && currentPrice > price) {
-            alertText = 'სამწუხაროდ ამ ფასად მანქანას ვერ შეიძენთ'; 
-        } 
-    }
-
-    return alertText;
 }
