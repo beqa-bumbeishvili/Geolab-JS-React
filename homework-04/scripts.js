@@ -73,7 +73,7 @@ function searchResultAlert() {
         if (availableCars.length > 0) {
             alertText = availableCarsTextList(availableCars);
         } else {
-            alertText = "სამწუხაროდ ამ ფასად მანქანას ვერ შეიძენთ";
+            alertText = "სამუხაროდ ამ ფასში მანქანა ვერ მოიძებნა";
         }
     }
    else {
