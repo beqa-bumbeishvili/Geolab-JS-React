@@ -149,3 +149,13 @@ function disableAllBuyButtons() {
     for (let i = 0; i < buyButtons.length; i++)
         buyButtons[i].disabled = true;
 }
+
+function avgCarPriceAlert() {
+    let sum = 0;
+    
+	for (let i = 0; i < cars.length; i++) {
+        let priceAsNumber = parseInt(cars[i].price);
+        sum = sum + priceAsNumber;
+    }
+    return alert(`ჩვენს საიტზე არსებული მანქანების საშუალო ღირებულება არის ${sum / cars.length}`)
+  }
