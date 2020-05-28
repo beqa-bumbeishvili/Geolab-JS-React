@@ -50,6 +50,7 @@ let ford = {
 
 let cars = [porsche, mercedes, toyota, honda, ford];
 
+//show car titles in p tag
 displayCarTitles(cars);
 
 //show car details when user clicks on the image
