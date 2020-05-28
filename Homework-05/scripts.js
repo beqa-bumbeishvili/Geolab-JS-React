@@ -163,7 +163,7 @@ function getCheapestCarID() {
         let currentPriceAsNumber = parseInt(cars[i].price);
         let validPrices = !isNaN(minPriceAsNumber) && !isNaN(currentPriceAsNumber);
 
-        if (validPrices && currentPriceAsNumber < minPriceAsNumberk)
+        if (validPrices && currentPriceAsNumber < minPriceAsNumber)
             minPricedCar = cars[i];
     }
 
@@ -199,3 +199,10 @@ function displayCarTitles(cars) {
         paragraphDiv.innerHTML = cars[i].manufacturer + ' ' + cars[i].model;
     }
 }
+
+/*
+Authors:
+ Beka Bumbeishvili
+ Nino Jakhveladze
+ Natalia Kavtaradze
+*/
