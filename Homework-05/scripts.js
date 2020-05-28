@@ -50,7 +50,9 @@ let ford = {
 
 let cars = [porsche, mercedes, toyota, honda, ford];
 
-//show card details when user clicks on the image
+displayCarTitles(cars);
+
+//show car details when user clicks on the image
 function showCarDetail(carImageElement) {
     let carID = carImageElement.parentNode.id;
     let car = cars.find(d => d.id === carID); //find car with id
@@ -120,7 +122,7 @@ function availableCarsTextList(availableCars) {
     return carInfo;
 }
 
-
+//highlight buy button for expensive car
 function highlightMostExpensiveCar() {
     disableAllBuyButtons();
     let expensiveCarID = getMostExpensiveCarID();
@@ -128,6 +130,15 @@ function highlightMostExpensiveCar() {
     expensiveCarContainer.querySelector('.buy-button').disabled = false;
 }
 
+//highlight buy button for cheapest car
+function highlightCheapestCar() {
+    disableAllBuyButtons();
+    let cheapestCarID = getCheapestCarID();
+    let cheapestCarContainer = document.querySelector('#' + cheapestCarID);
+    cheapestCarContainer.querySelector('.buy-button').disabled = false;
+}
+
+//find most extensive car id
 function getMostExpensiveCarID() {
     let maxPricedCar = cars[0];
 
@@ -143,6 +154,23 @@ function getMostExpensiveCarID() {
     return maxPricedCar.id;
 }
 
+//find cheapest car id
+function getCheapestCarID() {
+    let minPricedCar = cars[0];
+
+    for (let i = 1; i < cars.length; i++) {
+        let minPriceAsNumber = parseInt(minPricedCar.price);
+        let currentPriceAsNumber = parseInt(cars[i].price);
+        let validPrices = !isNaN(minPriceAsNumber) && !isNaN(currentPriceAsNumber);
+
+        if (validPrices && currentPriceAsNumber < minPriceAsNumberk)
+            minPricedCar = cars[i];
+    }
+
+    return minPricedCar.id;
+}
+
+//reusable function to disable all buy buttons
 function disableAllBuyButtons() {
     let buyButtons = document.querySelectorAll('.buy-button');
 
@@ -150,12 +178,24 @@ function disableAllBuyButtons() {
         buyButtons[i].disabled = true;
 }
 
+//show average car price message
 function avgCarPriceAlert() {
     let sum = 0;
-    
-	for (let i = 0; i < cars.length; i++) {
+
+    for (let i = 0; i < cars.length; i++) {
         let priceAsNumber = parseInt(cars[i].price);
-        sum = sum + priceAsNumber;
+        let validNumber = !isNaN(priceAsNumber);
+        if (validNumber) sum = sum + priceAsNumber;
     }
-    return alert(`ჩვენს საიტზე არსებული მანქანების საშუალო ღირებულება არის ${sum / cars.length}`)
-  }
+
+    return alert(`ჩვენს საიტზე არსებული მანქანების საშუალო ღირებულება არის ${sum / cars.length}$`);
+}
+
+//show each car title at the top of each image
+function displayCarTitles(cars) {
+    for (let i = 0; i < cars.length; i++) {
+        let containerDiv = document.getElementById(cars[i].id);
+        let paragraphDiv = containerDiv.querySelector('.car-title');
+        paragraphDiv.innerHTML = cars[i].manufacturer + ' ' + cars[i].model;
+    }
+}
