@@ -4,7 +4,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Homework 5</title>
+    <title>Homework 6</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -16,9 +16,9 @@
             <form class="form-inline my-2 my-lg-0 text-center d-block">
                 <button onclick="avgCarPriceAlert(this)" class="btn btn-outline-primary my-2 my-sm-0"
                     type="button">საშუალო ფასი</button>
-                <button id="expensive-car-highight" onclick="highlightMostExpensiveCar()"
+                <button id="expensive-car-highight" onclick="highlightCarBy('max_price')"
                     class="btn btn-outline-primary my-2 my-sm-0" type="button">ყველაზე ძვირიანი მანქანა</button>
-                <button id="cheap-car-highight" onclick="highlightCheapestCar()"
+                <button id="cheap-car-highight" onclick="highlightCarBy('min_price')"
                     class="btn btn-outline-primary my-2 my-sm-0" type="button">ყველაზე იაფიანი მანქანა</button>
                 <input class="form-control mr-sm-2" type="text" placeholder="ფასი" aria-label="Search" id="price-input">
                 <button id="searchResult" onclick="searchResultAlert()" class="btn btn-outline-primary my-2 my-sm-0"
@@ -54,7 +54,8 @@
         </div>
     </div>
 
-    <script src='scripts.js'></script>
+    <script src='scripts/cars.js'></script>
+    <script src='scripts/users.js'></script>
 </body>
 
 </html>

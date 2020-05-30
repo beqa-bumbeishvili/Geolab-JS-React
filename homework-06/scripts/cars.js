@@ -123,52 +123,32 @@ function availableCarsTextList(availableCars) {
     return carInfo;
 }
 
-//highlight buy button for expensive car
-function highlightMostExpensiveCar() {
+function highlightCarBy(condition) {
     disableAllBuyButtons();
-    let expensiveCarID = getMostExpensiveCarID();
-    let expensiveCarContainer = document.querySelector('#' + expensiveCarID);
-    expensiveCarContainer.querySelector('.buy-button').disabled = false;
+
+    let chosenCarID = getCarIdBy(condition);
+    let chosenCarContainer = document.querySelector('#' + chosenCarID);
+    
+    chosenCarContainer.querySelector('.buy-button').disabled = false;
 }
 
-//highlight buy button for cheapest car
-function highlightCheapestCar() {
-    disableAllBuyButtons();
-    let cheapestCarID = getCheapestCarID();
-    let cheapestCarContainer = document.querySelector('#' + cheapestCarID);
-    cheapestCarContainer.querySelector('.buy-button').disabled = false;
-}
-
-//find most extensive car id
-function getMostExpensiveCarID() {
-    let maxPricedCar = cars[0];
+function getCarIdBy(condition) {
+    let chosenCar = cars[0];
 
     for (let i = 1; i < cars.length; i++) {
-        let maxPriceAsNumber = parseInt(maxPricedCar.price);
+        let chosenCarPriceAsNumber = parseInt(chosenCar.price);
         let currentPriceAsNumber = parseInt(cars[i].price);
-        let validPrices = !isNaN(maxPriceAsNumber) && !isNaN(currentPriceAsNumber);
+        let validPrices = !isNaN(chosenCarPriceAsNumber) && !isNaN(currentPriceAsNumber);
 
-        if (validPrices && currentPriceAsNumber > maxPriceAsNumber)
-            maxPricedCar = cars[i];
+        if (!validPrices) return undefined;
+
+        let searchCondition = condition === 'min_price' ? currentPriceAsNumber < chosenCarPriceAsNumber : currentPriceAsNumber > chosenCarPriceAsNumber
+
+        if (searchCondition)
+            chosenCar = cars[i];
     }
 
-    return maxPricedCar.id;
-}
-
-//find cheapest car id
-function getCheapestCarID() {
-    let minPricedCar = cars[0];
-
-    for (let i = 1; i < cars.length; i++) {
-        let minPriceAsNumber = parseInt(minPricedCar.price);
-        let currentPriceAsNumber = parseInt(cars[i].price);
-        let validPrices = !isNaN(minPriceAsNumber) && !isNaN(currentPriceAsNumber);
-
-        if (validPrices && currentPriceAsNumber < minPriceAsNumber)
-            minPricedCar = cars[i];
-    }
-
-    return minPricedCar.id;
+    return chosenCar.id;
 }
 
 //reusable function to disable all buy buttons
