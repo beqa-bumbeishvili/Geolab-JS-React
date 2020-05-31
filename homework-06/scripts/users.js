@@ -56,3 +56,7 @@ function getLoginMessage(usernameFound, userFound, strongPassword) {
 
     return message;
 }
+
+function navigateToLogin() {
+    window.location = "login.html"
+}
