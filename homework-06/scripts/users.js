@@ -60,3 +60,8 @@ function getLoginMessage(usernameFound, userFound, strongPassword) {
 function navigateToLogin() {
     window.location = "login.html"
 }
+
+function tryLogin() {
+    let username = document.getElementById("inputUsername").value;
+    let password = document.getElementById("inputPassword").value;
+}
