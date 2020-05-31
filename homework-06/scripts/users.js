@@ -25,17 +25,18 @@ let users = [
     }
 ];
 
-function showLoginMessage(){
-    let username = '' // აქ აიღებ username-ს როგორც სოფო აკეთებს ვიდეოში
-    let password =  '' // აქ აიღებ password-ს როგორც სოფო აკეთებს ვიდეოში
+function showLoginMessage() {
+    let username = document.getElementById("inputUsername").value;
+    let password = document.getElementById("inputPassword").value;
 
+    let fieldIsEmpty = checkField(username, password);
     let usernameFound = checkUsername(users, username);
     let userFound = checkUser(users, username, password);
     let passwordIsStrong = checkPasswordStrength(password);
 
-    let loginMessage = getLoginMessage(usernameFound, userFound, passwordIsStrong);
+    let loginMessage = getLoginMessage(fieldIsEmpty, usernameFound, userFound, passwordIsStrong);
 
-    // აქ გააკეთე ალერთი დაბრუნებული მესიჯით
+    alert(loginMessage);
 }
 
 function checkUsername(users, username) {
@@ -50,10 +51,15 @@ function checkPasswordStrength(password) {
     return password.length >= 8;
 }
 
-function getLoginMessage(usernameFound, userFound, strongPassword) {
+function checkField(username, password) {
+    return username === "" || password === "";
+}
+
+function getLoginMessage(usernameFound, fieldIsEmpty, userFound, strongPassword) {
     let message;
 
-    if (!usernameFound) message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა';
+    if (!fieldIsEmpty) message = 'გთხოვთ შეავსეთ მონაცემები';
+    else if (!usernameFound) message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა';
     else if (!userFound) message = 'პაროლი არასწორია';
     else if (!strongPassword) message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
     else message = 'შეხვედით სისტემაში წარმატებით';
