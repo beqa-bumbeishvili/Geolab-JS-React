@@ -83,3 +83,23 @@ function getLoginMessage(fieldIsEmpty, usernameFound, userFound, strongPassword)
 function navigateTo(pageName) {
     window.location = pageName + '.html';
 }
+
+function passwordEyeClick() {
+    togglePasswordVisibility();
+    toggleEyeIcon();
+}
+
+function togglePasswordVisibility() {
+    let passwordInput = document.querySelector('#inputPassword');
+    if (passwordInput.type === 'password')
+        passwordInput.type = 'text';
+    else
+        passwordInput.type = 'password';
+}
+
+function toggleEyeIcon() {
+    let eyeIcon = document.querySelector('#eye-icon');
+
+    eyeIcon.classList.toggle('fa-eye-slash')
+    eyeIcon.classList.toggle('fa-eye');
+}
