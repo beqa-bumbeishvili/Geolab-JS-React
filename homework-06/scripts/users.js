@@ -100,6 +100,6 @@ function togglePasswordVisibility() {
 function toggleEyeIcon() {
     let eyeIcon = document.querySelector('#eye-icon');
 
-    eyeIcon.classList.toggle('fa-eye-slash')
+    eyeIcon.classList.toggle('fa-eye-slash');
     eyeIcon.classList.toggle('fa-eye');
 }
