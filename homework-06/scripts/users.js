@@ -25,14 +25,18 @@ let users = [
     }
 ];
 
-let incorrectInput = { username: 'user7', password: 'incorrect_password' };
-let correctInput = { username: 'user5', password: '+K]2H9' };
+function showLoginMessage(){
+    let username = '' // აქ აიღებ username-ს როგორც სოფო აკეთებს ვიდეოში
+    let password =  '' // აქ აიღებ password-ს როგორც სოფო აკეთებს ვიდეოში
 
-let usernameFound = checkUsername(users, correctInput.username);
-let userFound = checkUser(users, correctInput.username, correctInput.password);
-let strongPassword = checkPasswordStrength(correctInput.password);
+    let usernameFound = checkUsername(users, username);
+    let userFound = checkUser(users, username, password);
+    let passwordIsStrong = checkPasswordStrength(password);
 
-let loginMessage = getLoginMessage(usernameFound, userFound, strongPassword);
+    let loginMessage = getLoginMessage(usernameFound, userFound, passwordIsStrong);
+
+    // აქ გააკეთე ალერთი დაბრუნებული მესიჯით
+}
 
 function checkUsername(users, username) {
     return users.find(user => user.username === username);
