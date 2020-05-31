@@ -55,14 +55,14 @@ function checkField(username, password) {
     return username === "" || password === "";
 }
 
-function getLoginMessage(usernameFound, fieldIsEmpty, userFound, strongPassword) {
+function getLoginMessage(fieldIsEmpty, usernameFound, userFound, strongPassword) {
     let message;
 
-    if (!fieldIsEmpty) message = 'გთხოვთ შეავსეთ მონაცემები';
-    else if (!usernameFound) message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა';
-    else if (!userFound) message = 'პაროლი არასწორია';
-    else if (!strongPassword) message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
-    else message = 'შეხვედით სისტემაში წარმატებით';
+    if (fieldIsEmpty) { message = 'გთხოვთ შეავსეთ მონაცემები'; }
+    else if (!usernameFound) { message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა'; }
+    else if (!userFound) { message = 'პაროლი არასწორია'; }
+    else if (!strongPassword) { message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი'; }
+    else { message = 'შეხვედით სისტემაში წარმატებით'; }
 
     return message;
 }
