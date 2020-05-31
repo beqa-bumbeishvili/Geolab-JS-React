@@ -34,9 +34,12 @@ function showLoginMessage() {
     let userFound = checkUser(users, username, password);
     let passwordIsStrong = checkPasswordStrength(password);
 
-    let loginMessage = getLoginMessage(fieldIsEmpty, usernameFound, userFound, passwordIsStrong);
+    let loginResult = getLoginMessage(fieldIsEmpty, usernameFound, userFound, passwordIsStrong);
 
-    alert(loginMessage);
+    alert(loginResult.message);
+
+    if (loginResult.successFullLogin)
+        navigateTo('index');
 }
 
 function checkUsername(users, username) {
@@ -57,16 +60,26 @@ function checkField(username, password) {
 
 function getLoginMessage(fieldIsEmpty, usernameFound, userFound, strongPassword) {
     let message;
+    let successFullLogin = false;
 
     if (fieldIsEmpty) { message = 'გთხოვთ შეავსეთ მონაცემები'; }
     else if (!usernameFound) { message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა'; }
     else if (!userFound) { message = 'პაროლი არასწორია'; }
-    else if (!strongPassword) { message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი'; }
-    else { message = 'შეხვედით სისტემაში წარმატებით'; }
+    else if (!strongPassword) {
+        message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
+        successFullLogin = true;
+    }
+    else {
+        message = 'შეხვედით სისტემაში წარმატებით';
+        successFullLogin = true;
+    }
 
-    return message;
+    return {
+        message: message,
+        successFullLogin: successFullLogin
+    };
 }
 
-function navigateToLogin() {
-    window.location = "login.html"
+function navigateTo(pageName) {
+    window.location = pageName + '.html';
 }
