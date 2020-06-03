@@ -185,5 +185,4 @@ function displayCarTitles(cars) {
 Authors:
  Beka Bumbeishvili
  Nino Jakhveladze
- Natalia Kavtaradze
 */
