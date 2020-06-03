@@ -33,14 +33,16 @@ let users = [
 
 function showLoginMessage() {
     let username = document.getElementById("inputUsername").value;
+    let email = document.getElementById("inputEmail").value;
     let password = document.getElementById("inputPassword").value;
 
     let fieldIsEmpty = checkField(username, password);
     let usernameFound = checkUsername(users, username);
-    let userFound = checkUser(users, username, password);
+    let isCorrectEmail = checkEmail(email);
+    let userFound = checkUser(users, username, email, password);
     let passwordIsStrong = checkPasswordStrength(password);
 
-    let loginResult = getLoginMessage(fieldIsEmpty, usernameFound, userFound, passwordIsStrong);
+    let loginResult = getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong);
 
     alert(loginResult.message);
 
@@ -52,8 +54,17 @@ function checkUsername(users, username) {
     return users.find(user => user.username === username);
 }
 
-function checkUser(users, possibleUsername, possiblePassword) {
-    return users.find(user => user.username === possibleUsername && user.password === possiblePassword);
+function checkEmail(email){
+    let pattern = /\S+@\S+\.\S+/;
+    let validEmail = pattern.exec(email) !== null;
+    
+    return validEmail;
+}
+
+function checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
+    return users.find(user => user.username === possibleUsername
+        && user.email === possibleEmail
+        && user.password === possiblePassword);
 }
 
 function checkPasswordStrength(password) {
@@ -64,13 +75,14 @@ function checkField(username, password) {
     return username === "" || password === "";
 }
 
-function getLoginMessage(fieldIsEmpty, usernameFound, userFound, strongPassword) {
+function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, strongPassword) {
     let message;
     let successFullLogin = false;
 
     if (fieldIsEmpty) { message = 'გთხოვთ შეავსეთ მონაცემები'; }
     else if (!usernameFound) { message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა'; }
-    else if (!userFound) { message = 'პაროლი არასწორია'; }
+    else if (!isCorrectEmail) { message = 'იმეილი არის არასწორ ფორმატში, გთხოვთ გაასწოროთ'; }
+    else if (!userFound) { message = 'პაროლი ან მეილი არასწორია'; }
     else if (!strongPassword) {
         message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
         successFullLogin = true;
