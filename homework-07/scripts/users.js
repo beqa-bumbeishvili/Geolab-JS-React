@@ -68,14 +68,17 @@ function checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
 }
 
 function checkPasswordStrength(password) {
-    return password.length >= 8;
+    let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
+    let validPassword = pattern.exec(password) !==null;
+
+    return validPassword;
 }
 
 function checkField(username, password) {
     return username === "" || password === "";
 }
 
-function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, strongPassword) {
+function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong) {
     let message;
     let successFullLogin = false;
 
@@ -83,7 +86,7 @@ function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound,
     else if (!usernameFound) { message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა'; }
     else if (!isCorrectEmail) { message = 'იმეილი არის არასწორ ფორმატში, გთხოვთ გაასწოროთ'; }
     else if (!userFound) { message = 'პაროლი ან მეილი არასწორია'; }
-    else if (!strongPassword) {
+    else if (!passwordIsStrong) {
         message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
         successFullLogin = true;
     }
