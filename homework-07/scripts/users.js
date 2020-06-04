@@ -22,7 +22,7 @@ let users = [
     {
         username: 'user5',
         email: 'user5@gmail.com',
-        password: '+K]2H9'
+        password: '2K22H9'
     },
     {
         username: 'user6',
@@ -40,6 +40,7 @@ function showLoginMessage() {
     let usernameFound = checkUsername(users, username);
     let isCorrectEmail = checkEmail(email);
     let userFound = checkUser(users, username, email, password);
+
     let passwordIsStrong = checkPasswordStrength(password);
 
     let loginResult = getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong);
