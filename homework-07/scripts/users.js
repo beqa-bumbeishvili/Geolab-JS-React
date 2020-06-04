@@ -67,14 +67,14 @@ function checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
         && user.password === possiblePassword);
 }
 
-function checkPasswordStrength(password) {
+checkPasswordStrength = password => {
     let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
     let validPassword = pattern.exec(password) !==null;
 
     return validPassword;
 }
 
-function checkField(username, password) {
+checkField = (username, password) => {
     return username === "" || password === "";
 }
 
@@ -87,7 +87,7 @@ function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound,
     else if (!isCorrectEmail) { message = 'იმეილი არის არასწორ ფორმატში, გთხოვთ გაასწოროთ'; }
     else if (!userFound) { message = 'პაროლი ან მეილი არასწორია'; }
     else if (!passwordIsStrong) {
-        message = 'შეხვედით სისტემაში წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
+        message = 'სისტემაში შეხვედით წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
         successFullLogin = true;
     }
     else {
