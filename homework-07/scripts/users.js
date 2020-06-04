@@ -55,10 +55,10 @@ function checkUsername(users, username) {
     return users.find(user => user.username === username);
 }
 
-function checkEmail(email){
-    let pattern = /\S+@\S+\.\S+/;
+function checkEmail(email) {
+    let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     let validEmail = pattern.exec(email) !== null;
-    
+
     return validEmail;
 }
 
@@ -70,7 +70,7 @@ function checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
 
 checkPasswordStrength = password => {
     let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
-    let validPassword = pattern.exec(password) !==null;
+    let validPassword = pattern.exec(password) !== null;
 
     return validPassword;
 }
