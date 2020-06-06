@@ -36,7 +36,7 @@ function showLoginMessage() {
     let email = document.getElementById("inputEmail").value;
     let password = document.getElementById("inputPassword").value;
 
-    let fieldIsEmpty = checkField(username, password);
+    let fieldIsEmpty = checkField(username, password, email);
     let usernameFound = checkUsername(users, username);
     let isCorrectEmail = checkEmail(email);
     let userFound = checkUser(users, username, email, password);
@@ -74,8 +74,8 @@ checkPasswordStrength = password => {
     return validPassword;
 }
 
-checkField = (username, password) => {
-    return username === "" || password === "";
+checkField = (username, password, email) => {
+    return username === "" || password === "" || email === "";
 }
 
 function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong) {
