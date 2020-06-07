@@ -1,47 +1,59 @@
-let users = [
-    {
-        username: 'user1',
-        email: 'user1@gmail.com',
-        password: 'uydsZ39YL$WP'
-    },
-    {
-        username: 'user2',
-        email: 'user2@gmail.com',
-        password: 'ui/6NdAa7b'
-    },
-    {
-        username: 'user3',
-        email: 'user3@gmail.com',
-        password: 'W8g(MifboYf6rKdg'
-    },
-    {
-        username: 'user4',
-        email: 'user4@gmail.com',
-        password: '@6o7kw'
-    },
-    {
-        username: 'user5',
-        email: 'user5@gmail.com',
-        password: '2K22H9'
-    },
-    {
-        username: 'user6',
-        email: 'user6@gmail.com',
-        password: 'jAf6]D3zXbnZ)g'
+class User {
+    constructor(username, email, password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
     }
-];
+
+        static checkField = (username, password) => {
+            return username === "" || password === "";
+        }
+
+        static checkUsername(users, username) {
+            return users.find(user => user.username === username);
+        }
+
+        static checkEmail(email) {
+            let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+            let validEmail = pattern.exec(email) !== null;
+        
+            return validEmail;
+        }
+
+        static checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
+            return users.find(user => user.username === possibleUsername
+                && user.email === possibleEmail
+                && user.password === possiblePassword);
+        }
+        static checkPasswordStrength = password => {
+            let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
+            let validPassword = pattern.exec(password) !== null;
+        
+            return validPassword;
+        }
+}
+
+let user1 = new User('user1', 'user1@gmail.com', 'uydsZ39YL$WP');
+let user2 = new User('user2', 'user2@gmail.com', 'ui/6NdAa7b');
+let user3 = new User('user3', 'user3@gmail.com', 'W8g(MifboYf6rKdg');
+let user4 = new User('user4', 'user4@gmail.com', '@6o7kw');
+let user5 = new User('user5', 'user5@gmail.com', '2K22H9');
+let user6 = new User('user6', 'user6@gmail.com', 'jAf6]D3zXbnZ)g');
+
+
+let users = [user1, user2, user3, user4, user5, user6];
 
 function showLoginMessage() {
     let username = document.getElementById("inputUsername").value;
     let email = document.getElementById("inputEmail").value;
     let password = document.getElementById("inputPassword").value;
 
-    let fieldIsEmpty = checkField(username, password);
-    let usernameFound = checkUsername(users, username);
-    let isCorrectEmail = checkEmail(email);
-    let userFound = checkUser(users, username, email, password);
+    let fieldIsEmpty = User.checkField(username, password);
+    let usernameFound = User.checkUsername(users, username);
+    let isCorrectEmail = User.checkEmail(email);
+    let userFound = User.checkUser(users, username, email, password);
 
-    let passwordIsStrong = checkPasswordStrength(password);
+    let passwordIsStrong = User.checkPasswordStrength(password);
 
     let loginResult = getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong);
 
@@ -49,34 +61,6 @@ function showLoginMessage() {
 
     if (loginResult.successFullLogin)
         navigateTo('index');
-}
-
-function checkUsername(users, username) {
-    return users.find(user => user.username === username);
-}
-
-function checkEmail(email) {
-    let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-    let validEmail = pattern.exec(email) !== null;
-
-    return validEmail;
-}
-
-function checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
-    return users.find(user => user.username === possibleUsername
-        && user.email === possibleEmail
-        && user.password === possiblePassword);
-}
-
-checkPasswordStrength = password => {
-    let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
-    let validPassword = pattern.exec(password) !== null;
-
-    return validPassword;
-}
-
-checkField = (username, password) => {
-    return username === "" || password === "";
 }
 
 function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong) {
