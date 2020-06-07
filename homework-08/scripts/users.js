@@ -5,32 +5,32 @@ class User {
         this.password = password;
     }
 
-        static checkField = (username, password) => {
-            return username === "" || password === "";
-        }
+    static checkField(username, password) {
+        return username === "" || password === "";
+    }
 
-        static checkUsername(users, username) {
-            return users.find(user => user.username === username);
-        }
+    static checkUsername(users, username) {
+        return users.find(user => user.username === username);
+    }
 
-        static checkEmail(email) {
-            let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-            let validEmail = pattern.exec(email) !== null;
-        
-            return validEmail;
-        }
+    static checkEmail(email) {
+        let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        let validEmail = pattern.exec(email) !== null;
 
-        static checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
-            return users.find(user => user.username === possibleUsername
-                && user.email === possibleEmail
-                && user.password === possiblePassword);
-        }
-        static checkPasswordStrength = password => {
-            let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
-            let validPassword = pattern.exec(password) !== null;
-        
-            return validPassword;
-        }
+        return validEmail;
+    }
+
+    static checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
+        return users.find(user => user.username === possibleUsername
+            && user.email === possibleEmail
+            && user.password === possiblePassword);
+    }
+    static checkPasswordStrength = password => {
+        let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
+        let validPassword = pattern.exec(password) !== null;
+
+        return validPassword;
+    }
 }
 
 let user1 = new User('user1', 'user1@gmail.com', 'uydsZ39YL$WP');
