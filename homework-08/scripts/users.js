@@ -31,6 +31,21 @@ class User {
 
         return validPassword;
     }
+
+    static togglePasswordVisibility() {
+        let passwordInput = document.querySelector('#inputPassword');
+        if (passwordInput.type === 'password')
+            passwordInput.type = 'text';
+        else
+            passwordInput.type = 'password';
+    }
+    
+    static toggleEyeIcon() {
+        let eyeIcon = document.querySelector('#eye-icon');
+    
+        eyeIcon.classList.toggle('fa-eye-slash');
+        eyeIcon.classList.toggle('fa-eye');
+    }
 }
 
 let user1 = new User('user1', 'user1@gmail.com', 'uydsZ39YL$WP');
@@ -91,21 +106,6 @@ function navigateTo(pageName) {
 }
 
 function passwordEyeClick() {
-    togglePasswordVisibility();
-    toggleEyeIcon();
-}
-
-function togglePasswordVisibility() {
-    let passwordInput = document.querySelector('#inputPassword');
-    if (passwordInput.type === 'password')
-        passwordInput.type = 'text';
-    else
-        passwordInput.type = 'password';
-}
-
-function toggleEyeIcon() {
-    let eyeIcon = document.querySelector('#eye-icon');
-
-    eyeIcon.classList.toggle('fa-eye-slash');
-    eyeIcon.classList.toggle('fa-eye');
+    User.togglePasswordVisibility();
+    User.toggleEyeIcon();
 }
