@@ -25,6 +25,7 @@ class User {
             && user.email === possibleEmail
             && user.password === possiblePassword);
     }
+    
     static checkPasswordStrength = password => {
         let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
         let validPassword = pattern.exec(password) !== null;
