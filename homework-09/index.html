@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -8,45 +9,45 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <div class="container">
         <div class="mt-5">
             <form class="form-inline my-2 my-lg-0 text-center d-block">
-                <button onclick="avgCarPriceAlert(this)" class="btn btn-outline-primary my-2 my-sm-0"
-                    type="button">საშუალო ფასი</button>
-                <button id="expensive-car-highight" onclick="highlightCarBy('max_price')"
-                    class="btn btn-outline-primary my-2 my-sm-0" type="button">ყველაზე ძვირიანი მანქანა</button>
-                <button id="cheap-car-highight" onclick="highlightCarBy('min_price')"
-                    class="btn btn-outline-primary my-2 my-sm-0" type="button">ყველაზე იაფიანი მანქანა</button>
+                <button class="btn btn-outline-primary my-2 my-sm-0" id="average-price-btn" type="button">საშუალო
+                    ფასი</button>
+                <button id="expensive-car-highight" class="btn btn-outline-primary my-2 my-sm-0" type="button">ყველაზე
+                    ძვირიანი მანქანა</button>
+                <button id="cheap-car-highight" class="btn btn-outline-primary my-2 my-sm-0" type="button">ყველაზე
+                    იაფიანი მანქანა</button>
                 <input class="form-control mr-sm-2" type="text" placeholder="ფასი" aria-label="Search" id="price-input">
-                <button id="searchResult" onclick="searchResultAlert()" class="btn btn-outline-primary my-2 my-sm-0"
-                    type="button">შემოწმება</button>
+                <button id="searchResult" class="btn btn-outline-primary my-2 my-sm-0" type="button">შემოწმება</button>
             </form>
         </div>
         <div class="row mt-5">
             <div class="col-3 mt-2" id="porsche-1">
                 <p class="car-title text-center"></p>
-                <img src="images/porsche.jpg" class="car-image w-100 rounded" height="200" onclick="showCarDetail(this)" />
+                <img src="images/porsche.jpg" class="car-image w-100 rounded" height="200" />
                 <button class="btn btn-primary w-100 buy-button">ყიდვა</button>
             </div>
             <div class="col-3 mt-2" id="mercedes-1">
                 <p class="car-title text-center"></p>
-                <img src="images/mercedes.jpg" class="car-image w-100 rounded" height="200" onclick="showCarDetail(this)" />
+                <img src="images/mercedes.jpg" class="car-image w-100 rounded" height="200" />
                 <button class="btn btn-primary w-100 buy-button">ყიდვა</button>
             </div>
             <div class="col-3 mt-2" id="toyota-1">
                 <p class="car-title text-center"></p>
-                <img src="images/toyota.jpg" class="car-image w-100 rounded" height="200" onclick="showCarDetail(this)" />
+                <img src="images/toyota.jpg" class="car-image w-100 rounded" height="200" />
                 <button class="btn btn-primary w-100 buy-button">ყიდვა</button>
             </div>
             <div class="col-3 mt-2" id="ford-1">
                 <p class="car-title text-center"></p>
-                <img src="images/ford.png" class="car-image w-100 rounded" height="200" onclick="showCarDetail(this)" />
+                <img src="images/ford.png" class="car-image w-100 rounded" height="200" />
                 <button class="btn btn-primary w-100 buy-button">ყიდვა</button>
             </div>
             <div class="col-3 mt-2" id="honda-1">
                 <p class="car-title text-center"></p>
-                <img src="images/honda.png" class="car-image w-100 rounded" height="200" onclick="showCarDetail(this)" />
+                <img src="images/honda.png" class="car-image w-100 rounded" height="200" />
                 <button class="btn btn-primary w-100 buy-button">ყიდვა</button>
             </div>
         </div>
@@ -58,8 +59,9 @@
             </div>
         </div>
     </div>
-    
-    <script src='scripts/general/main.js'></script>
+
+    <script type="module" src='scripts/general/main.js'></script>
     <script src='scripts/general/login.js'></script>
 </body>
+
 </html>
