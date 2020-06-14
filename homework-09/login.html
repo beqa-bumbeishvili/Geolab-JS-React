@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Homework</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <form>
+            <div class="row justify-content-md-center align-utems-center">
+                <div class="col-6">
+                    <div class="form-group row">
+                        <label for="inputUsername" class="col-sm-2 col-form-label">სახელი</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputUsername">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputEmail" class="col-sm-2 col-form-label">მეილი</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="inputEmail">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">პაროლი</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="inputPassword">
+                        </div>
+                        <div class="col-sm-1">
+                            <div class="input-group-addon">
+                                <a onclick="passwordEyeClick()" href="#">
+                                    <i id="eye-icon" class="fa fa-eye-slash" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 mx-auto">
+                        <button type="button" class="btn btn-primary" onclick="showLoginMessage()">შესვლა</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </form>
+    </div>
+    <script src='scripts/general/login.js'></script>
+</body>
