@@ -29,7 +29,7 @@ function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound,
     let successFullLogin = false;
 
     if (fieldIsEmpty) { message = alertsHelper.fillInputErrosMessage(); }
-    else if (!usernameFound) { message =  alertsHelper.userNotFoundErrorMessage(); }
+    else if (!usernameFound) { message = alertsHelper.userNotFoundErrorMessage(); }
     else if (!isCorrectEmail) { message = alertsHelper.incorrectEmailFormat(); }
     else if (!userFound) { message = alertsHelper.incorrectEmailOrPassword(); }
     else if (!passwordIsStrong) {
@@ -56,17 +56,40 @@ function passwordEyeClick() {
     usersHelper.toggleEyeIcon();
 }
 
-if (document.querySelector('#logIn')) 
-    document.querySelector('#logIn').addEventListener('click', function() {
-    showLoginMessage(this);
-});
+addClickEvents();
 
-if (document.querySelector('#eye-icon')) 
-    document.querySelector('#eye-icon').addEventListener('click', function() {
-    passwordEyeClick(this);
-});
+function addClickEvents() {
+    loginButtonClick();
+    eyeIconClick();
+    mainPageLoginButtonClick();
+}
 
-if (document.querySelector('#mainPageLogInBtn')) 
-    document.querySelector('#mainPageLogInBtn').addEventListener('click', function() {
-    navigateTo('login');
-});
+function loginButtonClick() {
+    let loginButton = document.querySelector('#logIn');
+
+    if (loginButton) {
+        loginButton.addEventListener('click', function () {
+            showLoginMessage(this);
+        });
+    }
+}
+
+function eyeIconClick() {
+    let eyeButton = document.querySelector('#eye-icon');
+
+    if (eyeButton) {
+        eyeButton.addEventListener('click', function () {
+            passwordEyeClick(this);
+        });
+    }
+}
+
+function mainPageLoginButtonClick() {
+    let mainLoginButton = document.querySelector('#mainPageLogInBtn');
+
+    if (mainLoginButton) {
+        mainLoginButton.addEventListener('click', function () {
+            navigateTo('login');
+        });
+    }
+}
