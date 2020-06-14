@@ -1,14 +1,63 @@
-let users;
+class User {
+    constructor(username, email, password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
 
-(function() {
-    let user1 = new User('user1', 'user1@gmail.com', 'uydsZ39YL$WP');
-    let user2 = new User('user2', 'user2@gmail.com', 'ui/6NdAa7b');
-    let user3 = new User('user3', 'user3@gmail.com', 'W8g(MifboYf6rKdg');
-    let user4 = new User('user4', 'user4@gmail.com', '@6o7kw');
-    let user5 = new User('user5', 'user5@gmail.com', '2K22H9');
-    let user6 = new User('user6', 'user6@gmail.com', 'jAf6]D3zXbnZ)g');
-    users = [user1, user2, user3, user4, user5, user6];
-})();
+    static checkField(username, password) {
+        return username === "" || password === "";
+    }
+
+    static checkUsername(users, username) {
+        return users.find(user => user.username === username);
+    }
+
+    static checkEmail(email) {
+        let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        let validEmail = pattern.exec(email) !== null;
+
+        return validEmail;
+    }
+
+    static checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
+        return users.find(user => user.username === possibleUsername
+            && user.email === possibleEmail
+            && user.password === possiblePassword);
+    }
+    
+    static checkPasswordStrength = password => {
+        let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
+        let validPassword = pattern.exec(password) !== null;
+
+        return validPassword;
+    }
+
+    static togglePasswordVisibility() {
+        let passwordInput = document.querySelector('#inputPassword');
+        if (passwordInput.type === 'password')
+            passwordInput.type = 'text';
+        else
+            passwordInput.type = 'password';
+    }
+    
+    static toggleEyeIcon() {
+        let eyeIcon = document.querySelector('#eye-icon');
+    
+        eyeIcon.classList.toggle('fa-eye-slash');
+        eyeIcon.classList.toggle('fa-eye');
+    }
+}
+
+let user1 = new User('user1', 'user1@gmail.com', 'uydsZ39YL$WP');
+let user2 = new User('user2', 'user2@gmail.com', 'ui/6NdAa7b');
+let user3 = new User('user3', 'user3@gmail.com', 'W8g(MifboYf6rKdg');
+let user4 = new User('user4', 'user4@gmail.com', '@6o7kw');
+let user5 = new User('user5', 'user5@gmail.com', '2K22H9');
+let user6 = new User('user6', 'user6@gmail.com', 'jAf6]D3zXbnZ)g');
+
+
+let users = [user1, user2, user3, user4, user5, user6];
 
 function showLoginMessage() {
     let username = document.getElementById("inputUsername").value;
@@ -58,20 +107,6 @@ function navigateTo(pageName) {
 }
 
 function passwordEyeClick() {
-    togglePasswordVisibility();
-    toggleEyeIcon();
-}
-
-function togglePasswordVisibility() {
-    let passwordInput = document.querySelector('#inputPassword');
-    if (passwordInput.type === 'password')
-        passwordInput.type = 'text';
-    else
-        passwordInput.type = 'password';
-}
-
-function toggleEyeIcon() {
-    let eyeIcon = document.querySelector('#eye-icon');
-    eyeIcon.classList.toggle('fa-eye-slash');
-    eyeIcon.classList.toggle('fa-eye');
+    User.togglePasswordVisibility();
+    User.toggleEyeIcon();
 }
