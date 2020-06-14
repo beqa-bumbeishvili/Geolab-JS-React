@@ -8,7 +8,7 @@ function displayCarTitles(cars) {
 }
 
 //find cars under price
-function getFilteredCars(cars, price) { 
+function getFilteredCars(cars, price) {
     let filteredCars = [];
 
     for (let i = 0; i < cars.length; i++) {
@@ -42,4 +42,24 @@ function disableAllBuyButtons() {
         buyButtons[i].disabled = true;
 }
 
-export {displayCarTitles, getFilteredCars, availableCarsTextList, disableAllBuyButtons}
+
+function highlightBuyButtons(availableCars) {
+    disableAllBuyButtons();
+
+    for (let i = 0; i < availableCars.length; i++) {
+        let currentCarID = availableCars[i].id;
+
+        toggleBuyButtonVisibility(currentCarID, false);
+    }
+}
+
+function toggleBuyButtonVisibility(carID, disable) {
+    let chosenCarContainer = document.querySelector('#' + carID);
+
+    chosenCarContainer.querySelector('.buy-button').disabled = disable;
+}
+
+export {
+    displayCarTitles, getFilteredCars, availableCarsTextList, disableAllBuyButtons, highlightBuyButtons,
+    toggleBuyButtonVisibility
+}

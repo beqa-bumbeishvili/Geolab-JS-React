@@ -35,7 +35,7 @@ function searchResultAlert() {
     if (validNumber) {
         let availableCars = carsHelper.getFilteredCars(cars, priceAsNumber);
 
-        highlightBuyButtons(availableCars);
+        carsHelper.highlightBuyButtons(availableCars);
 
         if (availableCars.length > 0) {
             alertText = carsHelper.availableCarsTextList(availableCars);
@@ -50,28 +50,12 @@ function searchResultAlert() {
     alert(alertText);
 }
 
-function highlightBuyButtons(availableCars) {
-    carsHelper.disableAllBuyButtons();
-
-    for (let i = 0; i < availableCars.length; i++) {
-        let currentCarID = availableCars[i].id;
-
-        toggleBuyButtonVisibility(currentCarID, false);
-    }
-}
-
 function highlightCarBy(condition) {
     carsHelper.disableAllBuyButtons();
 
     let chosenCarID = carsStore.getCarIdBy(condition);
 
-    toggleBuyButtonVisibility(chosenCarID, false);
-}
-
-function toggleBuyButtonVisibility(carID, disable) {
-    let chosenCarContainer = document.querySelector('#' + carID);
-
-    chosenCarContainer.querySelector('.buy-button').disabled = disable;
+    carsHelper.toggleBuyButtonVisibility(chosenCarID, false);
 }
 
 //show average car price message
