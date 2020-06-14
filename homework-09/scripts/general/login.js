@@ -1,22 +1,8 @@
 import * as usersHelper from '../helpers/usersHelper.js'
+import * as usersStore from '../stores/usersStore.js'
+import * as alertsHelper from '../helpers/alertsHelper.js'
 
-class User {
-    constructor(username, email, password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
-}
-
-let user1 = new User('user1', 'user1@gmail.com', 'uydsZ39YL$WP');
-let user2 = new User('user2', 'user2@gmail.com', 'ui/6NdAa7b');
-let user3 = new User('user3', 'user3@gmail.com', 'W8g(MifboYf6rKdg');
-let user4 = new User('user4', 'user4@gmail.com', '@6o7kw');
-let user5 = new User('user5', 'user5@gmail.com', '2K22H9');
-let user6 = new User('user6', 'user6@gmail.com', 'jAf6]D3zXbnZ)g');
-
-
-let users = [user1, user2, user3, user4, user5, user6];
+let users = usersStore.getUserList();
 
 function showLoginMessage() {
     let username = document.getElementById("inputUsername").value;
@@ -42,16 +28,16 @@ function getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound,
     let message;
     let successFullLogin = false;
 
-    if (fieldIsEmpty) { message = 'გთხოვთ შეავსეთ მონაცემები'; }
-    else if (!usernameFound) { message = 'მოცემული სახელით მომხმარებელი არ მოიძებნა'; }
-    else if (!isCorrectEmail) { message = 'იმეილი არის არასწორ ფორმატში, გთხოვთ გაასწოროთ'; }
-    else if (!userFound) { message = 'პაროლი ან მეილი არასწორია'; }
+    if (fieldIsEmpty) { message = alertsHelper.fillInputErrosMessage(); }
+    else if (!usernameFound) { message =  alertsHelper.userNotFoundErrorMessage(); }
+    else if (!isCorrectEmail) { message = alertsHelper.incorrectEmailFormat(); }
+    else if (!userFound) { message = alertsHelper.incorrectEmailOrPassword(); }
     else if (!passwordIsStrong) {
-        message = 'სისტემაში შეხვედით წარმატებით, თუმცა გთხოვთ შეცვალოთ პაროლი';
+        message = alertsHelper.succsessLoginAlertMessage();
         successFullLogin = true;
     }
     else {
-        message = 'შეხვედით სისტემაში წარმატებით';
+        message = alertsHelper.successLoginMessage();
         successFullLogin = true;
     }
 
@@ -70,14 +56,17 @@ function passwordEyeClick() {
     usersHelper.toggleEyeIcon();
 }
 
-document.querySelector('#logIn').addEventListener('click', function() {
+if (document.querySelector('#logIn')) 
+    document.querySelector('#logIn').addEventListener('click', function() {
     showLoginMessage(this);
 });
 
-document.querySelector('#eye-icon').addEventListener('click', function() {
+if (document.querySelector('#eye-icon')) 
+    document.querySelector('#eye-icon').addEventListener('click', function() {
     passwordEyeClick(this);
 });
 
-// document.querySelector('#mainPageLogInBtn').addEventListener('click', function() {
-//     navigateTo(this);
-// });
+if (document.querySelector('#mainPageLogInBtn')) 
+    document.querySelector('#mainPageLogInBtn').addEventListener('click', function() {
+    navigateTo('login');
+});
