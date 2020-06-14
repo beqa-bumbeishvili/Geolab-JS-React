@@ -1,51 +1,10 @@
+import * as usersHelper from '../helpers/usersHelper.js'
+
 class User {
     constructor(username, email, password) {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    static checkField(username, password) {
-        return username === "" || password === "";
-    }
-
-    static checkUsername(users, username) {
-        return users.find(user => user.username === username);
-    }
-
-    static checkEmail(email) {
-        let pattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
-        let validEmail = pattern.exec(email) !== null;
-
-        return validEmail;
-    }
-
-    static checkUser(users, possibleUsername, possibleEmail, possiblePassword) {
-        return users.find(user => user.username === possibleUsername
-            && user.email === possibleEmail
-            && user.password === possiblePassword);
-    }
-    
-    static checkPasswordStrength = password => {
-        let pattern = /^(?=.*[0-9])(?=.*[A-Z])(?=.*[^\w\s]).{6,}$/;
-        let validPassword = pattern.exec(password) !== null;
-
-        return validPassword;
-    }
-
-    static togglePasswordVisibility() {
-        let passwordInput = document.querySelector('#inputPassword');
-        if (passwordInput.type === 'password')
-            passwordInput.type = 'text';
-        else
-            passwordInput.type = 'password';
-    }
-    
-    static toggleEyeIcon() {
-        let eyeIcon = document.querySelector('#eye-icon');
-    
-        eyeIcon.classList.toggle('fa-eye-slash');
-        eyeIcon.classList.toggle('fa-eye');
     }
 }
 
@@ -64,12 +23,12 @@ function showLoginMessage() {
     let email = document.getElementById("inputEmail").value;
     let password = document.getElementById("inputPassword").value;
 
-    let fieldIsEmpty = User.checkField(username, password);
-    let usernameFound = User.checkUsername(users, username);
-    let isCorrectEmail = User.checkEmail(email);
-    let userFound = User.checkUser(users, username, email, password);
+    let fieldIsEmpty = usersHelper.checkField(username, password);
+    let usernameFound = usersHelper.checkUsername(users, username);
+    let isCorrectEmail = usersHelper.checkEmail(email);
+    let userFound = usersHelper.checkUser(users, username, email, password);
 
-    let passwordIsStrong = User.checkPasswordStrength(password);
+    let passwordIsStrong = usersHelper.checkPasswordStrength(password);
 
     let loginResult = getLoginMessage(fieldIsEmpty, usernameFound, isCorrectEmail, userFound, passwordIsStrong);
 
@@ -107,6 +66,18 @@ function navigateTo(pageName) {
 }
 
 function passwordEyeClick() {
-    User.togglePasswordVisibility();
-    User.toggleEyeIcon();
+    usersHelper.togglePasswordVisibility();
+    usersHelper.toggleEyeIcon();
 }
+
+document.querySelector('#logIn').addEventListener('click', function() {
+    showLoginMessage(this);
+});
+
+document.querySelector('#eye-icon').addEventListener('click', function() {
+    passwordEyeClick(this);
+});
+
+// document.querySelector('#mainPageLogInBtn').addEventListener('click', function() {
+//     navigateTo(this);
+// });
