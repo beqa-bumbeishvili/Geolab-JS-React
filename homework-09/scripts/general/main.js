@@ -1,10 +1,13 @@
 import * as carsHelper from '../helpers/carsHelper.js'
 import * as carsStore from '../stores/carsStore.js'
+import * as alertsHelper from '../helpers/alertsHelper.js'
 
 let cars = carsStore.getCarsList();
 
 //show car titles in p tag
 carsHelper.displayCarTitles(cars);
+
+addClickEvents();
 
 //show car details when user clicks on the image
 function showCarDetail(carImageElement) {
@@ -16,9 +19,9 @@ function showCarDetail(carImageElement) {
         alertText = car.getDescription();
     }
     else {
-        alertText = 'მანქანა ვერ მოიძებნა';
+        alertText = alertsHelper.idSearchFailed();
     }
-    
+
     alert(alertText);
 }
 
@@ -37,11 +40,11 @@ function searchResultAlert() {
         if (availableCars.length > 0) {
             alertText = carsHelper.availableCarsTextList(availableCars);
         } else {
-            alertText = "სამუხაროდ ამ ფასში მანქანა ვერ მოიძებნა";
+            alertText = alertsHelper.carNotFoundWithinPrice();
         }
     }
     else {
-        alertText = "გთხოვთ შეიყვანოთ ფასი სწორ ფორმატში.";
+        alertText = alertsHelper.incorrectPriceFormat();
     }
 
     alert(alertText);
@@ -73,18 +76,12 @@ function toggleBuyButtonVisibility(carID, disable) {
 
 //show average car price message
 function avgCarPriceAlert() {
-    let sum = 0;
+    let averagePrice = carsStore.getAveragePrice();
 
-    for (let i = 0; i < cars.length; i++) {
-        let priceAsNumber = parseInt(cars[i].price);
-        let validNumber = !isNaN(priceAsNumber);
-        if (validNumber) sum = sum + priceAsNumber;
-    }
+    let message = alertsHelper.averagePriceMessage(averagePrice);
 
-    return alert(`ჩვენს საიტზე არსებული მანქანების საშუალო ღირებულება არის ${sum / cars.length}$`);
+    alert(message);
 }
-
-addClickEvents();
 
 function addClickEvents() {
     averagePriceClick();

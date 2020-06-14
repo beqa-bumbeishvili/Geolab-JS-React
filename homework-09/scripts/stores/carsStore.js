@@ -12,7 +12,7 @@ function getCarsList() {
 
 function getCarIdBy(condition) {
     let cars = getCarsList();
-    
+
     let chosenCar = cars[0];
 
     for (let i = 1; i < cars.length; i++) {
@@ -31,5 +31,19 @@ function getCarIdBy(condition) {
     return chosenCar.id;
 }
 
+function getAveragePrice(){
+    let cars = getCarsList();
 
-export {getCarsList, getCarIdBy}
+    let sum = 0;
+
+    for (let i = 0; i < cars.length; i++) {
+        let priceAsNumber = parseInt(cars[i].price);
+        let validNumber = !isNaN(priceAsNumber);
+        if (validNumber) sum = sum + priceAsNumber;
+    }
+
+    return sum/cars.length;
+}
+
+
+export {getCarsList, getCarIdBy, getAveragePrice}
