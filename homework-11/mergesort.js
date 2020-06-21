@@ -23,11 +23,11 @@ function merge(leftSide, rightSide) { // შემოვიდა ორი მ�
             result.push(rightSide[j]); // შედეგში ჩაამატე მარჯვენა მასივის მიმდინარე ელემენტი
             j++;                       // გაზარდე მარჯვენა მასივის იტერაციის ინდექსი
         }
-
-        let lastElement = leftSide.slice(i).concat(rightSide.slice(j))
-
-        return result.concat(lastElement);
     }
+
+    let lastElement = leftSide.slice(i).concat(rightSide.slice(j))
+
+    return result.concat(lastElement);
 }
 
 let inputArray = [4, 3, 2, 1];
