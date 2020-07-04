@@ -25,10 +25,10 @@ function merge(leftSide, rightSide) { // შემოვიდა ორი მ�
         }
     }
 
-    let lastElement = leftSide.slice(i).concat(rightSide.slice(j))
+    let lastElement = leftSide.slice(i).concat(rightSide.slice(j));
 
     return result.concat(lastElement);
 }
 
-let inputArray = [4, 3, 2, 1];
+let inputArray = [0, 2, 8, 4, 1];
 console.log(mergeSort(inputArray));

@@ -1,2 +1,29 @@
 /.vscode
 /homework-04/.vscode
+
+# dependencies
+/homework-12/cars-app/node_modules
+/homework-12/cars-app/.pnp
+/homework-12/cars-app/.pnp.js
+
+# testing
+/homework-12/cars-app/coverage
+
+# production
+/homework-12/cars-app/build
+
+# misc
+/homework-12/cars-app/.DS_Store
+/homework-12/cars-app/.env.local
+/homework-12/cars-app/.env.development.local
+/homework-12/cars-app/.env.test.local
+/homework-12/cars-app/.env.production.local
+
+/homework-12/cars-app/npm-debug.log*
+/homework-12/cars-app/yarn-debug.log*
+/homework-12/cars-app/yarn-error.log*
+/homework-12/cars-app/yarn.lock
+/homework-12/cars-app/package-lock.json
+
+# readme
+/homework-12/cars-app/README.md
