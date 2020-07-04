@@ -2,7 +2,7 @@ import React from 'react';
 import CarItem from './CarItem'
 import carsStore from '../helpers/carsStore'
 
-const carsList = carsStore.getCarsList(); //ciklit davarenderebt amat
+const carsList = carsStore.getCarsList(); 
 
 class CarsList extends React.Component {
     render() {
