@@ -24,6 +24,9 @@
 /homework-12/cars-app/yarn-error.log*
 /homework-12/cars-app/yarn.lock
 /homework-12/cars-app/package-lock.json
+/homework-12/cars-app/src/react-app-env.d.ts
 
 # readme
 /homework-12/cars-app/README.md
+
+
