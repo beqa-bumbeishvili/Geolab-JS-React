@@ -1,4 +1,4 @@
-function checkField(username, password) {
+wfunction checkField(username, password) {
     return username === "" || password === "";
 }
 
