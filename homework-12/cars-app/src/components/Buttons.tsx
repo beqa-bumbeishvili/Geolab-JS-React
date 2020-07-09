@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import carsStore from '../helpers/carsStore'
 import alertsHelper from '../helpers/alertsHelper'
 import carsHelper from '../helpers/carsHelper'
 
+
+interface ButtonsState {
+    searchFieldValue: string
+}
+
 class Buttons extends React.Component {
+    state: ButtonsState = { searchFieldValue: '' }
 
     private _showAveragePrice = () => {
         let averagePrice = carsStore.getAveragePrice();
@@ -21,9 +27,18 @@ class Buttons extends React.Component {
         carsHelper.toggleBuyButtonVisibility(chosenCarID, false);
     }
 
+    private _checkButtonAction = () => {
+        this._searchResultAlert();
+    }
+
+    private _searchFieldChange = (event: SyntheticEvent) =>{
+        this.setState({
+            searchFieldValue: (event.target as HTMLInputElement).value
+        });
+    }
 
     private _searchResultAlert() {
-        let price = (document.getElementById('price-input') as HTMLInputElement)!.value;
+        let price = this.state.searchFieldValue;
 
         let priceAsNumber = parseInt(price);
         let validNumber = !isNaN(priceAsNumber);
@@ -59,9 +74,10 @@ class Buttons extends React.Component {
                         onClick={() => this._highlightCarBy('max_price')} > ყველაზე ძვირიანი მანქანა </button>
                     <button id="cheap-car-highight" className='btn btn-outline-primary my-2 my-sm-0' type='button'
                         onClick={() => this._highlightCarBy('min_price')}> ყველაზე იაფიანი მანქანა</button>
-                    <input className='form-control mr-sm-2' type='text' placeholder='ფასი' aria-label='Search' id='price-input'></input>
+                    <input className='form-control mr-sm-2' type='text' placeholder='ფასი' aria-label='Search' id='price-input'
+                        value={this.state.searchFieldValue} onChange={(e) => this._searchFieldChange(e)}></input>
                     <button id='searchResult' className='btn btn-outline-primary my-2 my-sm-0' type='button'
-                    onClick={this._searchResultAlert} >შემოწმება</button>
+                        onClick={this._checkButtonAction} >შემოწმება</button>
                 </form>
             </div>
         )
