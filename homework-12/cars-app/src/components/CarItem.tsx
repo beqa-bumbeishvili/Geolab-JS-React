@@ -4,7 +4,8 @@ import carsStore from '../helpers/carsStore'
 import alertsHelper from '../helpers/alertsHelper'
 
 interface CarProperties {
-    car: Car
+    car: Car,
+    disableButton: boolean
 }
 
 class CarItem extends React.Component<CarProperties> {
@@ -37,7 +38,7 @@ class CarItem extends React.Component<CarProperties> {
                 <p className='car-title text-center'>{this.props.car.manufacturer + ' ' + this.props.car.model}</p>
                 <img src={require('../images/' + this.props.car.id + '.' + this.props.car.imageType)}
                     className='car-image w-100 rounded' height='200' onClick={this.showCarDetail} />
-                <button className='btn btn-primary w-100 buy-button'>ყიდვა</button>
+                <button className='btn btn-primary w-100 buy-button' disabled={this.props.disableButton}>ყიდვა</button>
             </div>
         )
     }

@@ -8,7 +8,11 @@ interface ButtonsState {
     searchFieldValue: string
 }
 
-class Buttons extends React.Component {
+interface ButtonsProps {
+    checkButtonClick: (value: string) => void;
+}
+
+class Buttons extends React.Component<ButtonsProps> {
     state: ButtonsState = { searchFieldValue: '' }
 
     private _showAveragePrice = () => {
@@ -28,10 +32,11 @@ class Buttons extends React.Component {
     }
 
     private _checkButtonAction = () => {
+        this.props.checkButtonClick(this.state.searchFieldValue);
         this._searchResultAlert();
     }
 
-    private _searchFieldChange = (event: SyntheticEvent) =>{
+    private _searchFieldChange = (event: SyntheticEvent) => {
         this.setState({
             searchFieldValue: (event.target as HTMLInputElement).value
         });
@@ -48,8 +53,6 @@ class Buttons extends React.Component {
 
         if (validNumber) {
             let availableCars = carsHelper.getFilteredCars(cars, price);
-
-            carsHelper.highlightBuyButtons(availableCars);
 
             if (availableCars.length > 0) {
                 alertText = carsHelper.availableCarsTextList(availableCars);

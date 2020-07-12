@@ -4,12 +4,25 @@ import CarsList from './CarsList';
 import '../styles/style.css'
 import '../styles/bootstrap.min.css'
 
-class CarsCatalogMain extends React.Component {
+interface MainPageStage {
+    inputValue: string
+}
+
+class CarsCatalogMain extends React.Component<{}, MainPageStage> {
+
+    state: MainPageStage = { inputValue: '' }
+
+    _saveInputValue = (value: string) => {
+        this.setState({
+            inputValue: value
+        })
+    }
+
     render() {
         return (
             <div className='container'>
-                <Buttons />
-                <CarsList />
+                <Buttons checkButtonClick={this._saveInputValue} />
+                <CarsList inputValue={this.state.inputValue} />
             </div>
         )
     }
