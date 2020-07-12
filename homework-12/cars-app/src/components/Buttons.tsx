@@ -1,8 +1,7 @@
 import React, { SyntheticEvent } from 'react';
-import carsStore from '../helpers/carsStore'
 import alertsHelper from '../helpers/alertsHelper'
 import carsHelper from '../helpers/carsHelper'
-
+import CarsStore from '../stores/CarsStore'
 
 interface ButtonsState {
     searchFieldValue: string
@@ -16,7 +15,7 @@ class Buttons extends React.Component<ButtonsProps> {
     state: ButtonsState = { searchFieldValue: '' }
 
     private _showAveragePrice = () => {
-        let averagePrice = carsStore.getAveragePrice();
+        let averagePrice = CarsStore.getAveragePrice();
 
         let message = alertsHelper.averagePriceMessage(averagePrice);
 
@@ -26,7 +25,7 @@ class Buttons extends React.Component<ButtonsProps> {
     private _highlightCarBy = (condition: string) => {
         carsHelper.disableAllBuyButtons();
 
-        let chosenCarID = carsStore.getCarIdBy(condition) || '';
+        let chosenCarID = CarsStore.getCarIdBy(condition) || '';
 
         carsHelper.toggleBuyButtonVisibility(chosenCarID, false);
     }
@@ -49,7 +48,7 @@ class Buttons extends React.Component<ButtonsProps> {
         let validNumber = !isNaN(priceAsNumber);
         let alertText;
 
-        let cars = carsStore.getCarsList();
+        let cars = CarsStore.getCarsList();
 
         if (validNumber) {
             let availableCars = carsHelper.getFilteredCars(cars, price);

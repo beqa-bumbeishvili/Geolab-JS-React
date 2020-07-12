@@ -45,5 +45,19 @@ function getAveragePrice() {
     return sum / cars.length;
 }
 
+function getCar(id: string) {
+    let cars = getCarsList();
 
-export default { getCarsList, getCarIdBy, getAveragePrice }
+    let chosenCar;
+
+    for (let i = 0; i < cars.length; i++) {
+        if (cars[i].id === id)
+            chosenCar = cars[i];
+    }
+
+    return chosenCar;
+
+}
+
+
+export default { getCarsList, getCarIdBy, getAveragePrice, getCar }

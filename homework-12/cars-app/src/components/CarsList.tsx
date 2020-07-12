@@ -1,6 +1,6 @@
 import React from 'react';
 import CarItem from './CarItem'
-import carsStore from '../helpers/carsStore'
+import carsStore from '../stores/CarsStore'
 
 const carsList = carsStore.getCarsList();
 
