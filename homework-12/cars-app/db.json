@@ -1,0 +1,54 @@
+{
+  "cars": [
+    {
+      "id": "porsche-1",
+      "manufacturer": "Porsche",
+      "model": "Panamera",
+      "color": "black",
+      "releaseYear": 2020,
+      "price": "120000$",
+      "horsepower": 330,
+      "imageType": "jpg"
+    },
+    {
+      "id": "mercedes-1",
+      "manufacturer": "Mercedes",
+      "model": "S-Class",
+      "color": "white",
+      "releaseYear": 2019,
+      "price": "94250$",
+      "horsepower": 362,
+      "imageType": "jpg"
+    },
+    {
+      "id": "toyota-1",
+      "manufacturer": "Toyota",
+      "model": "Prius",
+      "color": "blue",
+      "releaseYear": 2009,
+      "price": "5000$",
+      "horsepower": 118,
+      "imageType": "jpg"
+    },
+    {
+      "id": "ford-1",
+      "manufacturer": "Ford",
+      "model": "Fusion",
+      "color": "gray",
+      "releaseYear": 2015,
+      "price": "32780$",
+      "horsepower": 175,
+      "imageType": "png"
+    },
+    {
+      "id": "honda-1",
+      "manufacturer": "Honda",
+      "model": "Fit",
+      "color": "silver",
+      "releaseYear": 2006,
+      "price": "3500$",
+      "horsepower": 110,
+      "imageType": "png"
+    }
+  ]
+}
