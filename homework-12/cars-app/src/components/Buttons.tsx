@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from 'react';
 import alertsHelper from '../helpers/alertsHelper'
 import carsHelper from '../helpers/carsHelper'
 import CarsStore from '../stores/CarsStore'
+import { Link } from 'react-router-dom'
 
 interface ButtonsState {
     searchFieldValue: string
@@ -80,6 +81,7 @@ class Buttons extends React.Component<ButtonsProps> {
                         value={this.state.searchFieldValue} onChange={(e) => this._searchFieldChange(e)}></input>
                     <button id='searchResult' className='btn btn-outline-primary my-2 my-sm-0' type='button'
                         onClick={this._checkButtonAction} >შემოწმება</button>
+                    <Link to={'login'}><button className='btn btn-outline-primary my-2 my-sm-0'>შესვლა</button></Link>
                 </form>
             </div>
         )
