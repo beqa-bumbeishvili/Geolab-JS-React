@@ -34,8 +34,10 @@ private _passwordChange = (event: SyntheticEvent) => {
 private _loginButtonAction = (event: SyntheticEvent) => {
   event.preventDefault();
 
+  let emailValid = userHelper.checkEmail(this.state.emailInputValue)
+  let passwordValid = userHelper.checkPasswordStrength(this.state.passwordInputValue)
   let checkResult = userHelper.checkUser(allUsersStore.getUserList(), this.state.usernameInputValue, this.state.emailInputValue, this.state.passwordInputValue)
-  console.log(checkResult)
+  console.log(emailValid, passwordValid, checkResult)
 }
 
   render() {
