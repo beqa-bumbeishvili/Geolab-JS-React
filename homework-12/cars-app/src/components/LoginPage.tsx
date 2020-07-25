@@ -100,7 +100,6 @@ export default class RegistrationForm extends React.Component<LoginState> {
           <Form.Label htmlFor="password">პაროლი</Form.Label>
           <Form.Control type="text" name="password" value={this.state.passwordInputValue} onChange={(e) => this._passwordChange(e)} />
         </Form.Group>
-        {/* {this.state.error ? <div>{this.state.error}</div> : undefined} */}
         <div className="submit">
           <Button onClick={(e) => this._loginButtonAction(e)}> შესვლა</Button>
         </div>
