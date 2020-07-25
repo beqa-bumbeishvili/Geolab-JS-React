@@ -1,7 +1,7 @@
 import User from '../classes/User'
 
-function checkField(username: string, password: string ) {
-    return username === "" || password === "";
+function checkField(username: string, email: string, password: string) {
+    return username === "" || email === "" || password === "";
 }
 
 function checkUsername(users: User[], username: string) {
@@ -43,6 +43,6 @@ function toggleEyeIcon() {
     eyeIcon?.classList.toggle('fa-eye');
 }
 
-export default { 
+export default {
     checkField, checkUsername, checkEmail, checkUser, checkPasswordStrength, togglePasswordVisibility, toggleEyeIcon
 }
